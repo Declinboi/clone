@@ -157,7 +157,7 @@ class PowerSyncRepository {
   late final PowerSyncDatabase _db;
 
   /// The Supabase client.
-  late final supabase = Supabase.instance.client;
+  late final SupabaseClient supabase = Supabase.instance.client;
 
   /// Initializes the local database and opens a new instance of the database.
   Future<void> initialize({bool offlineMode = false}) async {
