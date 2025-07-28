@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "964527279157",
+    "project_id": "clone-dev-7da5f",
+    "storage_bucket": "clone-dev-7da5f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964527279157:android:fd7d1fb3d66145b5a7f57c",
+        "android_client_info": {
+          "package_name": "com.cloney1.clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964527279157-7nt6jk3q2l45c4c35s738ckgduu9fbpe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsBlEJ1v_ETLhy6M5cOaYNXpR7C8zMoGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964527279157-7nt6jk3q2l45c4c35s738ckgduu9fbpe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

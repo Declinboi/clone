@@ -185,7 +185,7 @@ class PowerSyncRepository {
   /// Returns the relative directory of the local database.
   Future<String> getDatabasePath() async {
     final dir = await getApplicationSupportDirectory();
-    return join(dir.path, 'flutter-instagram-offline-first.db');
+    return join(dir.path, 'clone.db');
   }
 
   /// Loads the Supabase client with the provided environment values.

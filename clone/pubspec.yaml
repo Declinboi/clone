@@ -7,6 +7,8 @@ environment:
   sdk: ^3.8.0
 
 dependencies:
+  shared:
+    path: packages/shared
   bloc: ^9.0.0
   envied: ^1.1.1
   flutter:
@@ -15,8 +17,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
-api_repository:
-path: packages/api_repository
+  powersync_repository:
+    path: packages/powersync_repository
+  firebase_core: ^3.15.2
 
 dev_dependencies:
   bloc_test: ^10.0.0
