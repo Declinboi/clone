@@ -12,10 +12,11 @@ migrate_working_dir/
 
 .env.dev
 .env.prod
-
+.env.stg
 # Generated env
 lib/src/env.dev.g.dart
 lib/src/env.prod.g.dart
+lib/src/env.stg.g.dart
 
 # IntelliJ related
 *.iml
