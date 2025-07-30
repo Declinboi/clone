@@ -2,8 +2,8 @@ import 'package:chats_repository/chats_repository.dart';
 import 'package:database_client/database_client.dart';
 import 'package:env/env.dart';
 import 'package:firebase_notifications_client/firebase_notifications_client.dart';
-import 'package:flutter_instagram_offline_first_clone/app/app.dart';
-import 'package:flutter_instagram_offline_first_clone/bootstrap.dart';
+import 'package:clone/app/app.dart';
+import 'package:clone/bootstrap.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:notifications_repository/notifications_repository.dart';
 import 'package:persistent_storage/persistent_storage.dart';
@@ -20,16 +20,16 @@ void main() {
     appFlavor: AppFlavor.development(),
     (
       powerSyncRepository,
-      // firebaseMessaging,
-      // sharedPreferences,
-      // firebaseRemoteConfigRepository,
+      firebaseMessaging,
+      sharedPreferences,
+      firebaseRemoteConfigRepository,
     ) async {
-      // final firebaseNotificationsClient =
-      //     FirebaseNotificationsClient(firebaseMessaging: firebaseMessaging);
+      final firebaseNotificationsClient =
+          FirebaseNotificationsClient(firebaseMessaging: firebaseMessaging);
 
-      // final notificationsRepository = NotificationsRepository(
-      //   notificationsClient: firebaseNotificationsClient,
-      // );
+      final notificationsRepository = NotificationsRepository(
+        notificationsClient: firebaseNotificationsClient,
+      );
 
       final tokenStorage = InMemoryTokenStorage();
 
