@@ -20,6 +20,9 @@ dependencies:
   powersync_repository:
     path: packages/powersync_repository
   firebase_core: ^3.15.2
+  get_it: ^8.1.0
+  path_provider: ^2.1.5
+  google_sign_in: ^7.1.1
 
 dev_dependencies:
   bloc_test: ^10.0.0
