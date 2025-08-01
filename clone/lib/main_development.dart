@@ -1,10 +1,10 @@
 
 import 'package:chats_repository/chats_repository.dart';
+import 'package:clone/app/app.dart';
+import 'package:clone/bootstrap.dart';
 import 'package:database_client/database_client.dart';
 import 'package:env/env.dart';
 import 'package:firebase_notifications_client/firebase_notifications_client.dart';
-import 'package:clone/app/app.dart';
-import 'package:clone/bootstrap.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:notifications_repository/notifications_repository.dart';
 import 'package:persistent_storage/persistent_storage.dart';

@@ -9,10 +9,13 @@ environment:
 dependencies:
   app_ui:
     path: packages/app_ui
+  env:
+    path: packages/env  
   shared:
     path: packages/shared
   bloc: ^9.0.0
   envied: ^1.1.1
+  flex_color_scheme: ^8.2.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1

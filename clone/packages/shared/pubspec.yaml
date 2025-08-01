@@ -15,3 +15,5 @@ dependencies:
   powersync: ^1.15.0
   env:
     path: ../env
+  flutter:
+    sdk: flutter
