@@ -83,7 +83,7 @@ Future<void> bootstrap(
       runApp(
         TranslationProvider(
           child: await builder(
-            powerSyncRepository
+            powerSyncRepository,
             firebaseMessaging,
             sharedPreferences,
             firebaseRemoteConfigRepository,
