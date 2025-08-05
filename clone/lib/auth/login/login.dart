@@ -1,5 +1,6 @@
 
 // ignore_for_file: eol_at_end_of_file
 
+export 'cubit/login_cubit.dart';
 export 'view/login_page.dart';
 export 'widgets/widgets.dart';

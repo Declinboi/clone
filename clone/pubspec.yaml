@@ -11,27 +11,35 @@ dependencies:
     path: packages/app_ui
   bloc: ^9.0.0
   env:
-    path: packages/env  
+    path: packages/env
   envied: ^1.1.1
-  form_fields:
-    path: packages/form_fields
-  shared:
-    path: packages/shared
+  equatable: ^2.0.7
+  firebase_core: ^3.15.2
   flex_color_scheme: ^8.2.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
+  form_fields:
+    path: packages/form_fields
+  get_it: ^8.1.0
+  google_sign_in: ^7.1.1
+  hydrated_bloc: ^10.1.1
   intl: ^0.20.2
+  path_provider: ^2.1.5
   powersync_repository:
     path: packages/powersync_repository
-  firebase_core: ^3.15.2
-  get_it: ^8.1.0
-  path_provider: ^2.1.5
-  google_sign_in: ^7.1.1
+  shared:
+    path: packages/shared
+  slang: ^4.8.1
   slang_flutter: ^4.8.0
-  equatable: ^2.0.7
+  supabase_authentication_client:
+    path: packages/authentication_client/supabase_authentication_client
+  token_storage:
+    path: packages/authentication_client/token_storage
+  user_repository:
+    path: packages/user_repository    
 
 
 dev_dependencies:
