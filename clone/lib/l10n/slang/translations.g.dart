@@ -12,9 +12,14 @@
 // ignore_for_file: type=lint
 
 import 'package:flutter/widgets.dart';
-import 'package:slang/builder/model/node.dart';
+import 'package:slang/generated.dart';
+// import 'package:slang/builder/model/node.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
+import 'package:slang/slang.dart';
+// import 'package:slang/builder/model/node.dart'; // Provides TranslationBuilder
+import 'package:slang_flutter/slang_flutter.dart'; // Provides TranslationBuilder
+// import 'package:slang/builder/model/translation_builder.dart';
 
 const AppLocale _baseLocale = AppLocale.en;
 
@@ -28,11 +33,12 @@ enum AppLocale with BaseAppLocale<AppLocale, Translations> {
   en(languageCode: 'en', build: Translations.build),
   ru(languageCode: 'ru', build: _TranslationsRu.build);
 
-  const AppLocale(
-      {required this.languageCode,
-      this.scriptCode,
-      this.countryCode,
-      required this.build}); // ignore: unused_element
+  const AppLocale({
+    required this.languageCode,
+    this.scriptCode,
+    this.countryCode,
+    required this.build,
+  }); // ignore: unused_element
 
   @override
   final String languageCode;
@@ -42,6 +48,20 @@ enum AppLocale with BaseAppLocale<AppLocale, Translations> {
   final String? countryCode;
   @override
   final TranslationBuilder<AppLocale, Translations> build;
+
+  /// Required by BaseAppLocale
+  @override
+  Translations buildSync({
+    Map<String, dynamic>? overrides,
+    PluralResolver? cardinalResolver,
+    PluralResolver? ordinalResolver,
+  }) {
+    return build(
+      overrides: overrides,
+      cardinalResolver: cardinalResolver,
+      ordinalResolver: ordinalResolver,
+    ) as Translations;
+  }
 
   /// Gets current instance managed by [LocaleSettings].
   Translations get translations =>
@@ -96,21 +116,21 @@ extension BuildContextTranslationsExtension on BuildContext {
 /// Manages all translation instances and the current locale
 class LocaleSettings
     extends BaseFlutterLocaleSettings<AppLocale, Translations> {
-  LocaleSettings._() : super(utils: AppLocaleUtils.instance);
+  LocaleSettings._() : super(utils: AppLocaleUtils.instance, lazy: false);
 
   static final instance = LocaleSettings._();
 
   // static aliases (checkout base methods for documentation)
   static AppLocale get currentLocale => instance.currentLocale;
   static Stream<AppLocale> getLocaleStream() => instance.getLocaleStream();
-  static AppLocale setLocale(AppLocale locale,
+  static Future<AppLocale> setLocale(AppLocale locale,
           {bool? listenToDeviceLocale = false}) =>
       instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
   static AppLocale setLocaleRaw(String rawLocale,
           {bool? listenToDeviceLocale = false}) =>
-      instance.setLocaleRaw(rawLocale,
+      instance.setLocaleRawSync(rawLocale,
           listenToDeviceLocale: listenToDeviceLocale);
-  static AppLocale useDeviceLocale() => instance.useDeviceLocale();
+  static Future<AppLocale> useDeviceLocale() => instance.useDeviceLocale();
   @Deprecated('Use [AppLocaleUtils.supportedLocales]')
   static List<Locale> get supportedLocales => instance.supportedLocales;
   @Deprecated('Use [AppLocaleUtils.supportedLocalesRaw]')
@@ -167,9 +187,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
       {Map<String, Node>? overrides,
       PluralResolver? cardinalResolver,
       PluralResolver? ordinalResolver})
-      : assert(overrides == null,
-            'Set "translation_overrides: true" in order to enable this feature.'),
-        $meta = TranslationMetadata(
+      : $meta = TranslationMetadata(
           locale: AppLocale.en,
           overrides: overrides ?? {},
           cardinalResolver: cardinalResolver,
@@ -210,15 +228,14 @@ class _TranslationsRu extends Translations {
       {Map<String, Node>? overrides,
       PluralResolver? cardinalResolver,
       PluralResolver? ordinalResolver})
-      : assert(overrides == null,
-            'Set "translation_overrides: true" in order to enable this feature.'),
-        $meta = TranslationMetadata(
+      : $meta = TranslationMetadata(
           locale: AppLocale.ru,
           overrides: overrides ?? {},
           cardinalResolver: cardinalResolver,
           ordinalResolver: ordinalResolver,
         ),
         super.build(
+            overrides: overrides,
             cardinalResolver: cardinalResolver,
             ordinalResolver: ordinalResolver) {
     super.$meta.setFlatMapFunction(

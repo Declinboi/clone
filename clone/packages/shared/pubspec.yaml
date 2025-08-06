@@ -11,9 +11,13 @@ dev_dependencies:
   test: ^1.26.2
   very_good_analysis: ^9.0.0
 dependencies:
-  logger: ^2.6.1
-  powersync: ^1.15.0
+  app_ui:
+    path: ../app_ui
   env:
     path: ../env
   flutter:
     sdk: flutter
+  intl: ^0.20.2
+  jiffy: ^6.4.3
+  logger: ^2.6.1
+  powersync: ^1.15.0

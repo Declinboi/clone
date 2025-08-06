@@ -7,9 +7,12 @@ environment:
   sdk: ^3.8.0
 
 dependencies:
+  animations: ^2.0.11
   app_ui:
     path: packages/app_ui
   bloc: ^9.0.0
+  database_client:
+    path: packages/database_client  
   env:
     path: packages/env
   envied: ^1.1.1

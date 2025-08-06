@@ -4,7 +4,7 @@ version: 0.1.0+1
 publish_to: none
 
 environment:
-  sdk: ">=3.3.1 <4.0.0"
+  sdk: ^3.8.0
   flutter: ^3.22.0
 
 dependencies:
@@ -12,7 +12,7 @@ dependencies:
     path: ../authentication_client
   flutter:
     sdk: flutter
-  google_sign_in: ^6.2.1
+  google_sign_in: ^7.1.1
   powersync_repository:
     path: ../../powersync_repository
   shared:
