@@ -127,24 +127,7 @@ class SignupState extends Equatable {
       ];
 }
 
-/// Message shown to the user for different submission statuses.
-class SubmissionStatusMessage {
-  final String title;
-  final String description;
 
-  const SubmissionStatusMessage({
-    required this.title,
-    required this.description,
-  });
-
-  const SubmissionStatusMessage.genericError()
-      : title = 'An error occurred.',
-        description = 'Please try again later.';
-
-  const SubmissionStatusMessage.networkError()
-      : title = 'Network error.',
-        description = 'Please check your internet connection and try again.';
-}
 
 final signupSubmissionStatusMessage =
     <SignUpSubmissionStatus, SubmissionStatusMessage>{

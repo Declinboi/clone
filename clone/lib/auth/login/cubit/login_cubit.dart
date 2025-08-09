@@ -36,7 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
   void onEmailChanged(String newValue) {
     final previousScreenState = state;
     final previousEmailState = previousScreenState.email;
-    final shouldValidate = previousEmailState.invalid;
+    final shouldValidate = previousEmailState.isNotValid;
     final newEmailState = shouldValidate
         ? Email.dirty(
             newValue,
@@ -74,7 +74,7 @@ class LoginCubit extends Cubit<LoginState> {
   void onPasswordChanged(String newValue) {
     final previousScreenState = state;
     final previousPasswordState = previousScreenState.password;
-    final shouldValidate = previousPasswordState.invalid;
+    final shouldValidate = previousPasswordState.isNotValid;
     final newPasswordState = shouldValidate
         ? Password.dirty(
             newValue,

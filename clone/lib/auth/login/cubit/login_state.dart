@@ -112,21 +112,7 @@ class LoginState {
   }
 }
 
-/// A message describing the result of a login submission.
-class SubmissionStatusMessage {
-  final String title;
-  final String? description;
 
-  const SubmissionStatusMessage({required this.title, this.description});
-
-  const SubmissionStatusMessage.genericError()
-      : title = 'An unexpected error occurred.',
-        description = null;
-
-  const SubmissionStatusMessage.networkError()
-      : title = 'Network error!',
-        description = 'Please check your internet connection and try again.';
-}
 
 final loginSubmissionStatusMessage =
     <LogInSubmissionStatus, SubmissionStatusMessage>{

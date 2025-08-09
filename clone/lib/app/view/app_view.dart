@@ -1,5 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:clone/app/app.dart';
+import 'package:clone/l10n/arb/app_localizations.dart' show AppLocalizations;
 import 'package:clone/l10n/l10n.dart';
 import 'package:clone/selector/selector.dart';
 import 'package:flutter/material.dart';

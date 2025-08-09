@@ -10,14 +10,25 @@ dev_dependencies:
   mocktail: ^1.0.4
   test: ^1.26.2
   very_good_analysis: ^9.0.0
+
 dependencies:
   app_ui:
     path: ../app_ui
   env:
     path: ../env
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
+  freezed_annotation: ^3.1.0
+  image_size_getter: ^2.4.1
+  insta_blocks:
+    path: ../insta_blocks
   intl: ^0.20.2
   jiffy: ^6.4.3
+  json_annotation: ^4.9.0
   logger: ^2.6.1
+  meta: ^1.16.0
+  ogp_data_extract: ^0.2.2
   powersync: ^1.15.0
+  user_repository:
+    path: ../user_repository

@@ -12,7 +12,7 @@ dependencies:
     path: packages/app_ui
   bloc: ^9.0.0
   database_client:
-    path: packages/database_client  
+    path: packages/database_client
   env:
     path: packages/env
   envied: ^1.1.1
@@ -29,6 +29,10 @@ dependencies:
   get_it: ^8.1.0
   google_sign_in: ^7.1.1
   hydrated_bloc: ^10.1.1
+  insta_blocks:
+    path: packages/insta_blocks
+  instagram_blocks_ui:
+    path: packages/instagram_blocks_ui
   intl: ^0.20.2
   path_provider: ^2.1.5
   powersync_repository:
@@ -42,8 +46,7 @@ dependencies:
   token_storage:
     path: packages/authentication_client/token_storage
   user_repository:
-    path: packages/user_repository    
-
+    path: packages/user_repository
 
 dev_dependencies:
   bloc_test: ^10.0.0

@@ -53,11 +53,11 @@ class ChangePasswordState extends Equatable {
 }
 
 // TODO: Import or define SubmissionStatusMessage if not already present.
-class SubmissionStatusMessage {
-  final String? title;
-  const SubmissionStatusMessage({this.title});
-  const SubmissionStatusMessage.genericError() : title = 'An error occurred. Please try again.';
-}
+// class SubmissionStatusMessage {
+//   final String? title;
+//   const SubmissionStatusMessage({this.title});
+//   const SubmissionStatusMessage.genericError() : title = 'An error occurred. Please try again.';
+// }
 
 final changePasswordStatusMessage =
     <ChangePasswordStatus, SubmissionStatusMessage>{
