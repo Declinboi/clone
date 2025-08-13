@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:notifications_repository/notifications_repository.dart';
 import 'package:persistent_storage/persistent_storage.dart';
 import 'package:posts_repository/posts_repository.dart';
+import 'package:powersync_repository/powersync_repository.dart';
 import 'package:search_repository/search_repository.dart';
 import 'package:shared/shared.dart';
 import 'package:stories_repository/stories_repository.dart';

@@ -1,7 +1,7 @@
+import 'package:clone/l10n/l10n.dart';
+import 'package:clone/selector/theme/theme_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_instagram_offline_first_clone/l10n/l10n.dart';
-import 'package:flutter_instagram_offline_first_clone/selector/theme/theme_selector.dart';
 
 /// A drop down menu to select a new [ThemeMode]
 ///

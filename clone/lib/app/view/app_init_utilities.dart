@@ -1,7 +1,7 @@
 import 'package:app_ui/app_ui.dart';
+import 'package:clone/l10n/l10n.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
-import 'package:clone/l10n/l10n.dart';
 import 'package:instagram_blocks_ui/instagram_blocks_ui.dart';
 import 'package:shared/shared.dart';
 import 'package:stories_editor/stories_editor.dart';
