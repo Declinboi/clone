@@ -3,13 +3,13 @@
 import 'dart:async';
 
 import 'package:app_ui/app_ui.dart';
-import 'package:flutter/material.dart';
 import 'package:clone/app/app.dart';
 import 'package:clone/feed/feed.dart';
 import 'package:clone/feed/post/post.dart';
 import 'package:clone/feed/post/widgets/widgets.dart';
 import 'package:clone/home/home.dart';
 import 'package:clone/l10n/l10n.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:instagram_blocks_ui/instagram_blocks_ui.dart';
 import 'package:shared/shared.dart';
