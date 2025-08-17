@@ -18,6 +18,8 @@ dependencies:
     sdk: flutter
   flutter_animate: ^4.4.0
   flutter_blurhash: ^0.8.2
+  image_picker_plus:
+    path: ../image_picker_plus
   insta_blocks:
     path: ../insta_blocks
   inview_notifier_list:

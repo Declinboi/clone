@@ -3,15 +3,15 @@
 import 'dart:math';
 
 import 'package:app_ui/app_ui.dart';
-import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:clone/app/app.dart';
 import 'package:clone/feed/post/post.dart';
 import 'package:clone/l10n/l10n.dart';
 import 'package:clone/selector/selector.dart';
 import 'package:clone/stories/stories.dart';
 import 'package:clone/user_profile/user_profile.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:instagram_blocks_ui/instagram_blocks_ui.dart';
 import 'package:posts_repository/posts_repository.dart';
