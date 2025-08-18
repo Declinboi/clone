@@ -34,7 +34,7 @@ class Otp extends FormzInput<String, OtpValidationError>
       };
 
   @override
-  List<Object> get props => [pure, value];
+  List<Object> get props => [value, isPure];
 }
 
 /// Validation errors for [Otp]. It can be empty or invalid.

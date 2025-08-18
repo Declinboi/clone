@@ -159,7 +159,7 @@ mixin FeedBlocMixin on Bloc<FeedEvent, FeedState> {
   int get reelsPageLimit => 10;
 
   PostsRepository get postsRepository;
-  FirebaseRemoteConfigRepository get firebaseRemoteConfigRepository;
+  // FirebaseRemoteConfigRepository get firebaseRemoteConfigRepository;
 
   /// Retrieves a post block by its ID.
   ///
@@ -279,15 +279,15 @@ mixin FeedBlocMixin on Bloc<FeedEvent, FeedState> {
     required bool hasMore,
     required List<InstaBlock> blocks,
   }) async {
-    final sponsoredBlocksStringJson =
-        firebaseRemoteConfigRepository.fetchRemoteData('sponsored_blocks');
+    // final sponsoredBlocksStringJson =
+    //     firebaseRemoteConfigRepository.fetchRemoteData('sponsored_blocks');
 
     final receivePort = ReceivePort();
     final isolate = await Isolate.spawn(_computeSponsoredBlocks, [
       receivePort.sendPort,
       hasMore,
       blocks,
-      sponsoredBlocksStringJson,
+      // sponsoredBlocksStringJson,
     ]);
     isolate.kill(priority: Isolate.immediate);
 

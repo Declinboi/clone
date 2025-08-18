@@ -8,7 +8,7 @@ import 'package:bloc/bloc.dart';
 import 'package:clone/app/app.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_remote_config_repository/firebase_remote_config_repository.dart';
+// import 'package:firebase_remote_config_repository/firebase_remote_config_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:posts_repository/posts_repository.dart';
 import 'package:shared/shared.dart';
@@ -20,9 +20,9 @@ part 'feed_state.dart';
 class FeedBloc extends Bloc<FeedEvent, FeedState> with FeedBlocMixin {
   FeedBloc({
     required PostsRepository postsRepository,
-    required FirebaseRemoteConfigRepository firebaseRemoteConfigRepository,
+    // required FirebaseRemoteConfigRepository firebaseRemoteConfigRepository,
   })  : _postsRepository = postsRepository,
-        _firebaseRemoteConfigRepository = firebaseRemoteConfigRepository,
+        // _firebaseRemoteConfigRepository = firebaseRemoteConfigRepository,
         super(const FeedState.initial()) {
     on<FeedPageRequested>(_onFeedPageRequested);
     on<FeedReelsPageRequested>(
@@ -49,11 +49,11 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> with FeedBlocMixin {
   PostsRepository get postsRepository => _postsRepository;
 
   @override
-  FirebaseRemoteConfigRepository get firebaseRemoteConfigRepository =>
-      _firebaseRemoteConfigRepository;
+  // FirebaseRemoteConfigRepository get firebaseRemoteConfigRepository =>
+  //     _firebaseRemoteConfigRepository;
 
   final PostsRepository _postsRepository;
-  final FirebaseRemoteConfigRepository _firebaseRemoteConfigRepository;
+  // final FirebaseRemoteConfigRepository _firebaseRemoteConfigRepository;
 
   Future<void> _onFeedPageRequested(
     FeedPageRequested event,

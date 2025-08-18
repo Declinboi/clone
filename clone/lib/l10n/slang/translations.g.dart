@@ -1,71 +1,92 @@
 /// Generated file. Do not edit.
 ///
-/// Original: lib/l10n/slang
+/// Source: lib/l10n/slang
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
 /// Strings: 2 (1 per locale)
 ///
-/// Built on 2024-05-01 at 17:52 UTC
+/// Built on 2025-08-17 at 18:26 UTC
 
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:slang/generated.dart';
-// import 'package:slang/builder/model/node.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
-import 'package:slang/slang.dart';
-// import 'package:slang/builder/model/node.dart'; // Provides TranslationBuilder
-import 'package:slang_flutter/slang_flutter.dart'; // Provides TranslationBuilder
-// import 'package:slang/builder/model/translation_builder.dart';
 
-const AppLocale _baseLocale = AppLocale.en;
+import 'translations_ru.g.dart' deferred as l_ru;
+part 'translations_en.g.dart';
 
-/// Supported locales, see extension methods below.
+/// Supported locales.
 ///
 /// Usage:
 /// - LocaleSettings.setLocale(AppLocale.en) // set locale
 /// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-  en(languageCode: 'en', build: Translations.build),
-  ru(languageCode: 'ru', build: _TranslationsRu.build);
+	en(languageCode: 'en'),
+	ru(languageCode: 'ru');
 
-  const AppLocale({
-    required this.languageCode,
-    this.scriptCode,
-    this.countryCode,
-    required this.build,
-  }); // ignore: unused_element
+	const AppLocale({
+		required this.languageCode,
+		this.scriptCode, // ignore: unused_element, unused_element_parameter
+		this.countryCode, // ignore: unused_element, unused_element_parameter
+	});
 
-  @override
-  final String languageCode;
-  @override
-  final String? scriptCode;
-  @override
-  final String? countryCode;
-  @override
-  final TranslationBuilder<AppLocale, Translations> build;
+	@override final String languageCode;
+	@override final String? scriptCode;
+	@override final String? countryCode;
 
-  /// Required by BaseAppLocale
-  @override
-  Translations buildSync({
-    Map<String, dynamic>? overrides,
-    PluralResolver? cardinalResolver,
-    PluralResolver? ordinalResolver,
-  }) {
-    return build(
-      overrides: overrides,
-      cardinalResolver: cardinalResolver,
-      ordinalResolver: ordinalResolver,
-    ) as Translations;
-  }
+	@override
+	Future<Translations> build({
+		Map<String, Node>? overrides,
+		PluralResolver? cardinalResolver,
+		PluralResolver? ordinalResolver,
+	}) async {
+		switch (this) {
+			case AppLocale.en:
+				return TranslationsEn(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+			case AppLocale.ru:
+				await l_ru.loadLibrary();
+				return l_ru.TranslationsRu(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+		}
+	}
 
-  /// Gets current instance managed by [LocaleSettings].
-  Translations get translations =>
-      LocaleSettings.instance.translationMap[this]!;
+	@override
+	Translations buildSync({
+		Map<String, Node>? overrides,
+		PluralResolver? cardinalResolver,
+		PluralResolver? ordinalResolver,
+	}) {
+		switch (this) {
+			case AppLocale.en:
+				return TranslationsEn(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+			case AppLocale.ru:
+				return l_ru.TranslationsRu(
+					overrides: overrides,
+					cardinalResolver: cardinalResolver,
+					ordinalResolver: ordinalResolver,
+				);
+		}
+	}
+
+	/// Gets current instance managed by [LocaleSettings].
+	Translations get translations => LocaleSettings.instance.getTranslations(this);
 }
 
 /// Method A: Simple
@@ -94,14 +115,10 @@ Translations get t => LocaleSettings.instance.currentTranslations;
 /// final t = Translations.of(context); // Get t variable.
 /// String a = t.someKey.anotherKey; // Use t variable.
 /// String b = t['someKey.anotherKey']; // Only for edge cases!
-class TranslationProvider
-    extends BaseTranslationProvider<AppLocale, Translations> {
-  TranslationProvider({required super.child})
-      : super(settings: LocaleSettings.instance);
+class TranslationProvider extends BaseTranslationProvider<AppLocale, Translations> {
+	TranslationProvider({required super.child}) : super(settings: LocaleSettings.instance);
 
-  static InheritedLocaleData<AppLocale, Translations> of(
-          BuildContext context) =>
-      InheritedLocaleData.of<AppLocale, Translations>(context);
+	static InheritedLocaleData<AppLocale, Translations> of(BuildContext context) => InheritedLocaleData.of<AppLocale, Translations>(context);
 }
 
 /// Method B shorthand via [BuildContext] extension method.
@@ -110,210 +127,56 @@ class TranslationProvider
 /// Usage (e.g. in a widget's build method):
 /// context.t.someKey.anotherKey
 extension BuildContextTranslationsExtension on BuildContext {
-  Translations get t => TranslationProvider.of(this).translations;
+	Translations get t => TranslationProvider.of(this).translations;
 }
 
 /// Manages all translation instances and the current locale
-class LocaleSettings
-    extends BaseFlutterLocaleSettings<AppLocale, Translations> {
-  LocaleSettings._() : super(utils: AppLocaleUtils.instance, lazy: false);
+class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, Translations> {
+	LocaleSettings._() : super(
+		utils: AppLocaleUtils.instance,
+		lazy: true,
+	);
 
-  static final instance = LocaleSettings._();
+	static final instance = LocaleSettings._();
 
-  // static aliases (checkout base methods for documentation)
-  static AppLocale get currentLocale => instance.currentLocale;
-  static Stream<AppLocale> getLocaleStream() => instance.getLocaleStream();
-  static Future<AppLocale> setLocale(AppLocale locale,
-          {bool? listenToDeviceLocale = false}) =>
-      instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
-  static AppLocale setLocaleRaw(String rawLocale,
-          {bool? listenToDeviceLocale = false}) =>
-      instance.setLocaleRawSync(rawLocale,
-          listenToDeviceLocale: listenToDeviceLocale);
-  static Future<AppLocale> useDeviceLocale() => instance.useDeviceLocale();
-  @Deprecated('Use [AppLocaleUtils.supportedLocales]')
-  static List<Locale> get supportedLocales => instance.supportedLocales;
-  @Deprecated('Use [AppLocaleUtils.supportedLocalesRaw]')
-  static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
-  static void setPluralResolver(
-          {String? language,
-          AppLocale? locale,
-          PluralResolver? cardinalResolver,
-          PluralResolver? ordinalResolver}) =>
-      instance.setPluralResolver(
-        language: language,
-        locale: locale,
-        cardinalResolver: cardinalResolver,
-        ordinalResolver: ordinalResolver,
-      );
+	// static aliases (checkout base methods for documentation)
+	static AppLocale get currentLocale => instance.currentLocale;
+	static Stream<AppLocale> getLocaleStream() => instance.getLocaleStream();
+	static Future<AppLocale> setLocale(AppLocale locale, {bool? listenToDeviceLocale = false}) => instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
+	static Future<AppLocale> setLocaleRaw(String rawLocale, {bool? listenToDeviceLocale = false}) => instance.setLocaleRaw(rawLocale, listenToDeviceLocale: listenToDeviceLocale);
+	static Future<AppLocale> useDeviceLocale() => instance.useDeviceLocale();
+	static Future<void> setPluralResolver({String? language, AppLocale? locale, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver}) => instance.setPluralResolver(
+		language: language,
+		locale: locale,
+		cardinalResolver: cardinalResolver,
+		ordinalResolver: ordinalResolver,
+	);
+
+	// synchronous versions
+	static AppLocale setLocaleSync(AppLocale locale, {bool? listenToDeviceLocale = false}) => instance.setLocaleSync(locale, listenToDeviceLocale: listenToDeviceLocale);
+	static AppLocale setLocaleRawSync(String rawLocale, {bool? listenToDeviceLocale = false}) => instance.setLocaleRawSync(rawLocale, listenToDeviceLocale: listenToDeviceLocale);
+	static AppLocale useDeviceLocaleSync() => instance.useDeviceLocaleSync();
+	static void setPluralResolverSync({String? language, AppLocale? locale, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver}) => instance.setPluralResolverSync(
+		language: language,
+		locale: locale,
+		cardinalResolver: cardinalResolver,
+		ordinalResolver: ordinalResolver,
+	);
 }
 
 /// Provides utility functions without any side effects.
 class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
-  AppLocaleUtils._()
-      : super(baseLocale: _baseLocale, locales: AppLocale.values);
+	AppLocaleUtils._() : super(
+		baseLocale: AppLocale.en,
+		locales: AppLocale.values,
+	);
 
-  static final instance = AppLocaleUtils._();
+	static final instance = AppLocaleUtils._();
 
-  // static aliases (checkout base methods for documentation)
-  static AppLocale parse(String rawLocale) => instance.parse(rawLocale);
-  static AppLocale parseLocaleParts(
-          {required String languageCode,
-          String? scriptCode,
-          String? countryCode}) =>
-      instance.parseLocaleParts(
-          languageCode: languageCode,
-          scriptCode: scriptCode,
-          countryCode: countryCode);
-  static AppLocale findDeviceLocale() => instance.findDeviceLocale();
-  static List<Locale> get supportedLocales => instance.supportedLocales;
-  static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
-}
-
-// translations
-
-// Path: <root>
-class Translations implements BaseTranslations<AppLocale, Translations> {
-  /// Returns the current translations of the given [context].
-  ///
-  /// Usage:
-  /// final t = Translations.of(context);
-  static Translations of(BuildContext context) =>
-      InheritedLocaleData.of<AppLocale, Translations>(context).translations;
-
-  /// You can call this constructor and build your own translation instance of this locale.
-  /// Constructing via the enum [AppLocale.build] is preferred.
-  Translations.build(
-      {Map<String, Node>? overrides,
-      PluralResolver? cardinalResolver,
-      PluralResolver? ordinalResolver})
-      : $meta = TranslationMetadata(
-          locale: AppLocale.en,
-          overrides: overrides ?? {},
-          cardinalResolver: cardinalResolver,
-          ordinalResolver: ordinalResolver,
-        ) {
-    $meta.setFlatMapFunction(_flatMapFunction);
-  }
-
-  /// Metadata for the translations of <en>.
-  @override
-  final TranslationMetadata<AppLocale, Translations> $meta;
-
-  /// Access flat map
-  dynamic operator [](String key) => $meta.getTranslation(key);
-
-  late final Translations _root = this; // ignore: unused_field
-
-  // Translations
-  TextSpan likedBy(
-          {required InlineSpan name,
-          required InlineSpan and,
-          required InlineSpan others}) =>
-      TextSpan(children: [
-        const TextSpan(text: 'Liked by '),
-        name,
-        const TextSpan(text: ' '),
-        and,
-        const TextSpan(text: ' '),
-        others,
-      ]);
-}
-
-// Path: <root>
-class _TranslationsRu extends Translations {
-  /// You can call this constructor and build your own translation instance of this locale.
-  /// Constructing via the enum [AppLocale.build] is preferred.
-  _TranslationsRu.build(
-      {Map<String, Node>? overrides,
-      PluralResolver? cardinalResolver,
-      PluralResolver? ordinalResolver})
-      : $meta = TranslationMetadata(
-          locale: AppLocale.ru,
-          overrides: overrides ?? {},
-          cardinalResolver: cardinalResolver,
-          ordinalResolver: ordinalResolver,
-        ),
-        super.build(
-            overrides: overrides,
-            cardinalResolver: cardinalResolver,
-            ordinalResolver: ordinalResolver) {
-    super.$meta.setFlatMapFunction(
-        $meta.getTranslation); // copy base translations to super.$meta
-    $meta.setFlatMapFunction(_flatMapFunction);
-  }
-
-  /// Metadata for the translations of <ru>.
-  @override
-  final TranslationMetadata<AppLocale, Translations> $meta;
-
-  /// Access flat map
-  @override
-  dynamic operator [](String key) =>
-      $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
-
-  @override
-  late final _TranslationsRu _root = this; // ignore: unused_field
-
-  // Translations
-  @override
-  TextSpan likedBy(
-          {required InlineSpan name,
-          required InlineSpan and,
-          required InlineSpan others}) =>
-      TextSpan(children: [
-        const TextSpan(text: 'Нравится '),
-        name,
-        const TextSpan(text: ' '),
-        and,
-        const TextSpan(text: ' '),
-        others,
-      ]);
-}
-
-/// Flat map(s) containing all translations.
-/// Only for edge cases! For simple maps, use the map function of this library.
-
-extension on Translations {
-  dynamic _flatMapFunction(String path) {
-    switch (path) {
-      case 'likedBy':
-        return (
-                {required InlineSpan name,
-                required InlineSpan and,
-                required InlineSpan others}) =>
-            TextSpan(children: [
-              const TextSpan(text: 'Liked by '),
-              name,
-              const TextSpan(text: ' '),
-              and,
-              const TextSpan(text: ' '),
-              others,
-            ]);
-      default:
-        return null;
-    }
-  }
-}
-
-extension on _TranslationsRu {
-  dynamic _flatMapFunction(String path) {
-    switch (path) {
-      case 'likedBy':
-        return (
-                {required InlineSpan name,
-                required InlineSpan and,
-                required InlineSpan others}) =>
-            TextSpan(children: [
-              const TextSpan(text: 'Нравится '),
-              name,
-              const TextSpan(text: ' '),
-              and,
-              const TextSpan(text: ' '),
-              others,
-            ]);
-      default:
-        return null;
-    }
-  }
+	// static aliases (checkout base methods for documentation)
+	static AppLocale parse(String rawLocale) => instance.parse(rawLocale);
+	static AppLocale parseLocaleParts({required String languageCode, String? scriptCode, String? countryCode}) => instance.parseLocaleParts(languageCode: languageCode, scriptCode: scriptCode, countryCode: countryCode);
+	static AppLocale findDeviceLocale() => instance.findDeviceLocale();
+	static List<Locale> get supportedLocales => instance.supportedLocales;
+	static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
 }

@@ -38,7 +38,8 @@ class Email extends FormzInput<String, EmailValidationError>
       };
 
   @override
-  List<Object> get props => [pure, value];
+  // List<Object> get props => [pure, value];
+  List<Object> get props => [value, isPure];
 }
 
 /// Validation errors for [Email]. It can be empty, invalid or already

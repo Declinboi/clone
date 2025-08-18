@@ -20,16 +20,16 @@ void main() {
     appFlavor: AppFlavor.production(),
     (
       powerSyncRepository,
-      firebaseMessaging,
-      sharedPreferences,
-      firebaseRemoteConfigRepository,
+      // firebaseMessaging,
+      // sharedPreferences,
+      // firebaseRemoteConfigRepository,
     ) async {
-      final firebaseNotificationsClient =
-          FirebaseNotificationsClient(firebaseMessaging: firebaseMessaging);
+      // final firebaseNotificationsClient =
+      //     FirebaseNotificationsClient(firebaseMessaging: firebaseMessaging);
 
-      final notificationsRepository = NotificationsRepository(
-        notificationsClient: firebaseNotificationsClient,
-      );
+      // final notificationsRepository = NotificationsRepository(
+      //   notificationsClient: firebaseNotificationsClient,
+      // );
 
       final tokenStorage = InMemoryTokenStorage();
 

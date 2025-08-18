@@ -1,15 +1,15 @@
 import 'package:app_ui/app_ui.dart';
-import 'package:chats_repository/chats_repository.dart';
-import 'package:firebase_remote_config_repository/firebase_remote_config_repository.dart';
+// import 'package:chats_repository/chats_repository.dart';
+// import 'package:firebase_remote_config_repository/firebase_remote_config_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:clone/app/app.dart';
 import 'package:clone/feed/feed.dart';
 import 'package:clone/selector/selector.dart';
-import 'package:notifications_repository/notifications_repository.dart';
 import 'package:posts_repository/posts_repository.dart';
-import 'package:search_repository/search_repository.dart';
-import 'package:stories_repository/stories_repository.dart';
+// import 'package:notifications_repository/notifications_repository.dart';
+// import 'package:search_repository/search_repository.dart';
+// import 'package:stories_repository/stories_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
 /// Key to access the [AppSnackbarState] from the [BuildContext].
@@ -24,22 +24,22 @@ class App extends StatelessWidget {
     required this.user,
     required this.userRepository,
     required this.postsRepository,
-    required this.chatsRepository,
-    required this.storiesRepository,
-    required this.searchRepository,
-    required this.notificationsRepository,
-    required this.firebaseRemoteConfigRepository,
+    // required this.chatsRepository,
+    // required this.storiesRepository,
+    // required this.searchRepository,
+    // required this.notificationsRepository,
+    // required this.firebaseRemoteConfigRepository,
     super.key,
   });
 
   final User user;
   final UserRepository userRepository;
   final PostsRepository postsRepository;
-  final ChatsRepository chatsRepository;
-  final StoriesRepository storiesRepository;
-  final SearchRepository searchRepository;
-  final NotificationsRepository notificationsRepository;
-  final FirebaseRemoteConfigRepository firebaseRemoteConfigRepository;
+  // final ChatsRepository chatsRepository;
+  // final StoriesRepository storiesRepository;
+  // final SearchRepository searchRepository;
+  // final NotificationsRepository notificationsRepository;
+  // final FirebaseRemoteConfigRepository firebaseRemoteConfigRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +47,11 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider.value(value: userRepository),
         RepositoryProvider.value(value: postsRepository),
-        RepositoryProvider.value(value: chatsRepository),
-        RepositoryProvider.value(value: storiesRepository),
-        RepositoryProvider.value(value: searchRepository),
-        RepositoryProvider.value(value: notificationsRepository),
-        RepositoryProvider.value(value: firebaseRemoteConfigRepository),
+        // RepositoryProvider.value(value: chatsRepository),
+        // RepositoryProvider.value(value: storiesRepository),
+        // RepositoryProvider.value(value: searchRepository),
+        // RepositoryProvider.value(value: notificationsRepository),
+        // RepositoryProvider.value(value: firebaseRemoteConfigRepository),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -59,7 +59,7 @@ class App extends StatelessWidget {
             create: (context) => AppBloc(
               user: user,
               userRepository: userRepository,
-              notificationsRepository: notificationsRepository,
+              // notificationsRepository: notificationsRepository,
             ),
           ),
           BlocProvider(create: (_) => LocaleBloc()),
@@ -67,8 +67,8 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (context) => FeedBloc(
               postsRepository: context.read<PostsRepository>(),
-              firebaseRemoteConfigRepository:
-                  context.read<FirebaseRemoteConfigRepository>(),
+              // firebaseRemoteConfigRepository:
+              //     context.read<FirebaseRemoteConfigRepository>(),
             ),
           ),
         ],

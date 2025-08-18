@@ -33,7 +33,7 @@ class FullName extends FormzInput<String, FullNameValidationError>
       };
 
   @override
-  List<Object?> get props => [value, pure];
+  List<Object?> get props => [value, isPure];
 }
 
 /// Validation errors for [FullName]. It can be empty or invalid.
